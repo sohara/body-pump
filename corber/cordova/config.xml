@@ -50,7 +50,6 @@
         <splash height="2048" id="2732-2048" src="res/screen/ios/2732-2048.png" width="2732" />
     </platform>
     <preference name="AutoHideSplashScreen" value="false" />
-    <preference name="SplashScreenDelay" value="20000" />
     <allow-navigation href="http://192.168.1.70:4200" name="ec-nav" />
     <engine name="ios" spec="~4.4.0" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
