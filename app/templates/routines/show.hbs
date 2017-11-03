@@ -1,0 +1,14 @@
+<h3>Routine: {{model.name}}</h3>
+<h4>Exercise Sets</h4>
+<ul>
+  {{#each model.sets as |set|}}
+    <li>
+      {{set.exercise}}
+    </li>
+  {{else}}
+    <p>Currently no exercises</p>
+  {{/each}}
+</ul>
+
+<h4>Add new exercise sets</h4>
+{{edit-set}}

@@ -1,8 +1,10 @@
 <h2>Routines</h2>
+
 <ul>
   {{#each model as |routine|}}
-    <li>{{routine.name}} {{routine.createdAt}}</li>
+    <li>{{#link-to 'routines.show' routine}}{{routine.name}}{{/link-to}}</li>
   {{/each}}
 </ul>
+
 <h3>{{#link-to 'routines.new'}}Add Routine{{/link-to}}</h3>
 {{outlet}}
