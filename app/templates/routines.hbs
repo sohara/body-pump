@@ -1,10 +1,16 @@
-<h2>Routines</h2>
-
-<ul>
+<h2 class="main">Routines</h2>
+{{#paper-list}}
   {{#each model as |routine|}}
-    <li>{{#link-to 'routines.show' routine}}{{routine.name}}{{/link-to}}</li>
+    {{#paper-item class="md-3-line"}}
+      <div class="md-list-item-text">
+        <h3>
+          {{#link-to 'routines.show' routine}}{{routine.name}}{{/link-to}}
+        </h3>
+        <p>{{routine.sets.length}} sets</p>
+      </div>
+    {{/paper-item}}
   {{/each}}
-</ul>
+{{/paper-list}}
 
 <h3>{{#link-to 'routines.new'}}Add Routine{{/link-to}}</h3>
 {{outlet}}
