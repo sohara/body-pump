@@ -9,7 +9,6 @@ export default Route.extend({
     save (model) {
       model.save().then(() => {
         this.transitionTo('routines');
-        console.log('saved!', model.get('name'));
       });
     }
   }

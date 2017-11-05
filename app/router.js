@@ -14,7 +14,6 @@ Router.map(function() {
     path: '/routines/:id'
   });
 
-
   this.route('exercises')
 });
 

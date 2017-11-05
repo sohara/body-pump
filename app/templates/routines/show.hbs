@@ -1,14 +1,56 @@
-<h2 class="main">Routine: {{model.name}}</h2>
-<h3>Exercise Sets</h3>
-<ul>
-  {{#each model.sets as |set|}}
-    <li>
-      {{set.exercise}}
-    </li>
-  {{else}}
-    <p>Currently no exercises</p>
-  {{/each}}
-</ul>
+<div class="content-area">
+  <h2>Routine: {{model.name}}</h2>
+  <h3>Exercise Sets</h3>
+  {{#paper-list}}
+    {{#each model.sets as |set|}}
+      {{#paper-item class="md-3-line"}}
+        <div class="md-list-item-text">
+          <h3>
+            {{set.exercise.name}}
+          </h3>
+        </div>
+      {{/paper-item}}
+    {{else}}
+      <p>Currently no exercise sets</p>
+    {{/each}}
+  {{/paper-list}}
+  {{#if newSet}}
+    {{#paper-form onSubmit=(route-action "saveSet" newSet) as |form|}}
+      <div class="layout-row">
+        <div class="layout-column flex-50">
+          {{#form.select label="Exercise"
+            selected=newSet.exercise
+            onChange=(action (mut newSet.exercise))
+            options=exercises as |exercise| }}
+            {{exercise.name}}
+          {{/form.select}}
+        </div>
+        <div class="layout-column flex-25">
+          {{form.input type="number" label="Reps"
+            value=newSet.numberReps
+            onChange=(action (mut newSet.numberReps))
+            min=1 max=100 required=true}}
+        </div>
+        <div class="layout-column flex-25">
+          {{form.input type="number" label="Sets"
+            value=newSet.numberSets
+            onChange=(action (mut newSet.numberSets))
+            min=1 max=100 required=true}}
+        </div>
+      </div>
+      <div class="layout-row">
+        {{#form.submit-button raised=true primary=true}}Save{{/form.submit-button}}
+      </div>
+    {{/paper-form}}
+  {{/if}}
+  <p>
+    {{#paper-button raised=true
+      fab=true
+      primary=true
+      onClick=(route-action 'addSet' model)}}
+      {{#paper-icon "add"}}
+      {{/paper-icon}}
+    {{/paper-button}}
+  </p>
 
-<h4>Add new exercise sets</h4>
-{{edit-set}}
+</div>
