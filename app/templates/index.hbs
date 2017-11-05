@@ -1,1 +1,24 @@
-<h2>Welcome to Body Pump</h2>
+<div class="content-area">
+  {{#if model}}
+    <h2>Workout in Progress</h2>
+    {{model.routine.name}}
+  {{else}}
+    <h2>Start a workout</h2>
+    <p>Select a routing</p>
+    {{#paper-form onSubmit=(route-action "startWorkout" routine) as |form|}}
+      <div class="layout-row">
+        <div class="layout-column flex-100">
+          {{#form.select label="Routine"
+            selected=routine
+            onChange=(action (mut routine))
+            options=routines as |routine| }}
+            {{routine.name}}
+          {{/form.select}}
+        </div>
+      </div>
+      <div class="layout-row">
+        {{#form.submit-button raised=true primary=true}}Start!{{/form.submit-button}}
+      </div>
+    {{/paper-form}}
+  {{/if}}
+</div>
