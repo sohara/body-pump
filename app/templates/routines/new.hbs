@@ -1,5 +1,14 @@
-<h2>New workout</h2>
-{{input value=model.name}}
-<button onclick={{route-action 'save' model}}>
-  Save
-</button>
+<div class="content-area">
+  <h2>New Routine</h2>
+
+  {{#paper-form onSubmit=(route-action "save" model) as |form|}}
+    <div class="layout-row">
+      <div class="layout-column flex-100">
+       {{form.input label="Name" value=model.name onChange=(action (mut model.name)) required=true}}
+      </div>
+    </div>
+    <div class="layout-row">
+      {{#form.submit-button raised=true primary=true}}Save{{/form.submit-button}}
+    </div>
+  {{/paper-form}}
+</div>

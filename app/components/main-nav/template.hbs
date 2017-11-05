@@ -12,8 +12,8 @@
           {{paper-icon 'assignment'}}
           <span>Routines</span>
         {{/content.menu-item}}
-        {{#content.menu-item}}
-          {{paper-icon 'local_phone'}}
+        {{#content.menu-item onClick=(action 'navigate' 'exercises' menu.actions.close)}}
+          {{paper-icon 'directions_run'}}
           <span>Exercises</span>
         {{/content.menu-item}}
       {{/menu.content}}

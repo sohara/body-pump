@@ -5,4 +5,16 @@ export default function(){
     this.use('toLeft'),
     this.reverse('toRight')
   );
+  this.transition(
+    this.fromRoute('routines'),
+    this.toRoute('routines.new'),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  );
+  this.transition(
+    this.fromRoute('routines'),
+    this.toRoute('routines.show'),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  );
 }

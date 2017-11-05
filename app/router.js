@@ -7,12 +7,15 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('routines', function () {
-    this.route('new');
-    this.route('show', {
-      path: ':id'
-    });
+  this.route('index', {path: '/'});
+  this.route('routines')
+  this.route('routines.new');
+  this.route('routines.show', {
+    path: '/routines/:id'
   });
+
+
+  this.route('exercises')
 });
 
 export default Router;

@@ -1,5 +1,9 @@
 @import 'ember-paper';
 
-h2.main {
+.content-area {
   padding: 0 16px;
+}
+
+md-input-container.full-width {
+  width: 100%;
 }
