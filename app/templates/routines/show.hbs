@@ -15,7 +15,7 @@
     {{/each}}
   {{/paper-list}}
   {{#if newSet}}
-    {{#paper-form onSubmit=(route-action "saveSet" newSet) as |form|}}
+    {{#paper-form onSubmit=(route-action "saveSet" newSet model) as |form|}}
       <div class="layout-row">
         <div class="layout-column flex-50">
           {{#form.select label="Exercise"

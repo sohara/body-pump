@@ -1,11 +1,11 @@
 import Route from '@ember/routing/route';
+import RSVP from 'rsvp';
 
 export default Route.extend({
   model(params) {
-    let routine = this.get('store').findRecord('routine', params.id, {
+    return this.get('store').findRecord('routine', params.id, {
       include: 'sets'
     });
-    return routine;
   },
 
   setupController (controller) {
@@ -22,13 +22,11 @@ export default Route.extend({
       });
       this.controller.set('newSet', set);
     },
-    saveSet(set) {
-      set.save().then(() => {
-        set.get('routine').then(routine => {
-          routine.save().then(() => {
-            this.controller.set('newSet', null);
-          });
-        });
+
+
+    saveSet(set, model) {
+      RSVP.all([ set.save(), model.save() ]).then(() => {
+        this.controller.set('newSet', null);
       });
     }
   }
